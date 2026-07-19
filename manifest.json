@@ -12,9 +12,7 @@
     "desktopCapture"
   ],
   "host_permissions": [
-    "https://job-extension-background.onrender.com/*",
-    "https://cover-letter-service.onrender.com/*",
-    "https://*.Applyryt.com/*"
+    "https://axzora-backend.onrender.com/*"
   ],
   "action": {
     "default_popup": "popup/popup.html",
