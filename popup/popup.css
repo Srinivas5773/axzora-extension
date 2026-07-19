@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 500px;
+  min-height: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+}
+
+.container {
+  background: white;
+  border: 2px solid #000000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #000000;
+  color: white;
+  border-bottom: 2px solid #000000;
+}
+
+.header-left h1 {
+  font-size: 18px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.user-name {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.btn-logout {
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: #f5f5f5;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.section-title {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  border-bottom: 2px solid #000000;
+  background: #f5f5f5;
+}
+
+.students-list {
+  padding: 0;
+}
+
+.student-item {
+  padding: 16px 20px;
+  border-bottom: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid transparent;
+}
+
+.student-item:hover {
+  filter: brightness(0.97);
+}
+
+/* Completion status variants */
+.student-item.status-complete {
+  background: #f0faf0;
+  border-left-color: #27ae60;
+}
+
+.student-item.status-incomplete {
+  background: #fff3e0;
+  border-left-color: #e67e22;
+}
+
+.student-item.status-unknown {
+  background: #fff5f5;
+  border-left-color: #e74c3c;
+}
+
+/* Screenshot checkbox row */
+.screenshot-row {
+  margin-top: 8px;
+}
+
+.screenshot-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #27ae60;
+}
+
+.screenshot-row input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+
+/* Applier header status indicator */
+.header-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.student-item:last-child {
+  border-bottom: none;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.student-email {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.student-stats {
+  font-size: 12px;
+  color: #000000;
+}
+
+.priority-badge {
+  padding: 6px 12px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  background: #ffffff;
+}
+
+.priority-high {
+  background: #000000;
+  color: #ffffff;
+}
+
+.error-message {
+  background: #f5f5f5;
+  color: #000000;
+  padding: 16px 20px;
+  border-top: 2px solid #000000;
+  font-size: 14px;
+  text-align: center;
+}

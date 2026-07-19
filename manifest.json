@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Axzora Job Applier",
+  "version": "1.0.0",
+  "description": "Job application assistant for Axzora Private Limited",
+  "permissions": [
+    "storage",
+    "tabs",
+    "sidePanel",
+    "tabCapture",
+    "offscreen",
+    "desktopCapture"
+  ],
+  "host_permissions": [
+    "https://job-extension-background.onrender.com/*",
+    "https://cover-letter-service.onrender.com/*",
+    "https://*.Applyryt.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "student/student.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

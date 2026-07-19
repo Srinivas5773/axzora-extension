@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Applier - Students</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <h1>Applyryt Job Applier</h1>
+        <span class="user-name" id="userName">Loading...</span>
+      </div>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+
+    <div id="loadingState" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading students...</p>
+    </div>
+
+    <div id="studentsContent" style="display: none;">
+      <div class="section-title">Assigned Students</div>
+      <div id="studentsList" class="students-list"></div>
+    </div>
+
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

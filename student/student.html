@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Jobs</title>
+  <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+  <!-- ===== ACKNOWLEDGEMENT MODAL ===== -->
+<div id="ackOverlay" class="ack-overlay hidden">
+  <div class="ack-modal">
+    <div class="ack-header">
+      ⚠️ Before You Begin
+    </div>
+    <div class="ack-body">
+
+      <div class="ack-rule">
+        <div class="ack-num">1</div>
+        
+        <div class="ack-text">Every application directly impacts a student's career. Treat it like your own.</div>
+      </div>
+
+      <div class="ack-rule">
+        <div class="ack-num">2</div>
+        <div class="ack-text">Mistakes — wrong answers, wrong resume, wrong details — lead to IMMEDIATE TERMINATION.</div>
+      </div>
+
+      <div class="ack-rule">
+        <div class="ack-num">3</div>
+        <div class="ack-text">Always double-check the full application. Auto-fill is NOT a guarantee.</div>
+      </div>
+
+      <div class="ack-rule ack-rule-critical">
+        <div class="ack-num ack-num-red">4</div>
+        <div class="ack-text">Only click "Applied" if you actually submitted the application. Use "Skip" for everything else.</div>
+      </div>
+
+      <div class="ack-rule">
+        <div class="ack-num">5</div>
+        <div class="ack-text">Screenshots are mandatory for every application.</div>
+      </div>
+
+      <div class="ack-rule">
+        <div class="ack-num">6</div>
+        <div class="ack-text">No personal communication with students outside the group.</div>
+      </div>
+
+      <label class="ack-check-label">
+        <input type="checkbox" id="ackCheckbox" />
+        <span>I understand and I am ready to apply with full focus and accuracy.</span>
+      </label>
+
+    </div>
+    <div class="ack-footer">
+      <button id="ackStartBtn" class="ack-btn" disabled>Start Session</button>
+    </div>
+  </div>
+</div>
+<!-- ===== END MODAL ===== -->
+
+  <div class="container">
+    <div class="header">
+      <button id="backBtn" class="btn-back">← Back</button>
+      <div class="header-center">
+        <h1 id="studentName">Loading...</h1>
+        <span class="student-email" id="studentEmail"></span>
+      </div>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+
+    <div id="sponsorshipBanner" class="sponsorship-banner">
+      <div class="sponsorship-row">
+        <span class="sponsorship-label">Sponsorship Now:</span>
+        <span id="sponsorshipNow" class="sponsorship-value">—</span>
+      </div>
+      <div class="sponsorship-row">
+        <span class="sponsorship-label">Sponsorship Future:</span>
+        <span id="sponsorshipFuture" class="sponsorship-value">—</span>
+      </div>
+    </div>
+
+    <div id="loadingState" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading job...</p>
+    </div>
+
+    <div id="jobContent" style="display: none;">
+      <div class="job-section">
+        <div class="section-header">
+          <h2>Current Job</h2>
+          <div class="job-number" id="jobNumber">Job #1</div>
+        </div>
+
+        <div class="job-link-section">
+          <label>Job Link:</label>
+          <div class="link-display">
+            <a href="#" id="jobLink" target="_blank"></a>
+            <button id="copyLinkBtn" class="btn-copy">Copy</button>
+          </div>
+        </div>
+
+        <div class="job-description-section">
+          <label>Job Description:</label>
+          <div class="description-box" id="jobDescription"></div>
+        </div>
+
+        <div class="button-group">
+          <button id="startApplicationBtn" class="btn-primary">Start Application</button>
+          <button id="studentDetailsBtn" class="btn-secondary" data-needs-recording disabled title="Start screen recording first">Student Details</button>
+        </div>
+
+        <div id="recordingStatus" class="recording-status rec-off">
+          <span class="rec-dot"></span>
+          <span id="recordingStatusText">Not recording — click Start Application to begin</span>
+        </div>
+
+        <div class="button-group" style="margin-top: 12px;">
+          <button id="downloadResumeBtn" class="btn-secondary" data-needs-recording disabled title="Start screen recording first">Download Resume</button>
+          <button id="coverLetterBtn" class="btn-secondary" data-needs-recording disabled title="Start screen recording first">Cover Letter</button>
+        </div>
+
+        <div class="button-group" style="margin-top: 12px;">
+          <button id="appliedBtn" class="btn-secondary" data-needs-recording disabled title="Start screen recording first">Applied</button>
+        </div>
+
+        <div class="button-group" style="margin-top: 12px;">
+          <button id="comeAtLastBtn" class="btn-secondary btn-warning" data-needs-recording disabled title="Start screen recording first">Come at Last</button>
+          <button id="skipJobBtn" class="btn-secondary btn-danger" data-needs-recording disabled title="Start screen recording first">Skip Job</button>
+        </div>
+      </div>
+
+      <div class="account-section" id="accountSection">
+        <div class="section-header">
+          <h2>🔐 Account</h2>
+        </div>
+        <div id="accountContent" class="student-info-grid"></div>
+      </div>
+
+      <div class="notes-section" id="notesSection">
+        <div class="section-header">
+          <h2>📝 Notes for this Student</h2>
+        </div>
+        <textarea id="studentNotes" placeholder="Add notes about this student (visible to you only)..." rows="4"></textarea>
+        <button id="saveNotesBtn" class="btn-secondary" style="margin-top: 8px;">Save Notes</button>
+      </div>
+
+      <div class="section">
+        <h2>🤖 AI Answer Assistant</h2>
+        <label class="input-label">Job Application Question</label>
+        <textarea id="ai-question" placeholder="Paste the application question here..." rows="4"></textarea>
+        <button id="ask-ai-btn">Generate Answer</button>
+        <label class="input-label">Suggested Answer</label>
+        <textarea id="ai-answer" rows="6" readonly placeholder="AI-generated human-style answer will appear here..."></textarea>
+        <button id="copy-ai-answer">Copy Answer</button>
+      </div>
+
+      <div id="studentInfoSection" style="display: none;">
+        <div class="section-header">
+          <h2>Student Information</h2>
+        </div>
+        <div id="studentInfoContent" class="student-info-grid"></div>
+      </div>
+    </div>
+
+    <div id="noJobsMessage" class="no-jobs-message" style="display: none;">
+      <p>No pending jobs for this student</p>
+      <button id="backToStudentsBtn" class="btn-secondary">Back to Students</button>
+    </div>
+
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+  </div>
+
+  <script type="module" src="student.js"></script>
+</body>
+</html>
